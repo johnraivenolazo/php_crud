@@ -107,6 +107,15 @@ function handleImageUpload(array $file, ?string $existingPath = null): array
     $newFilename = uniqid('img_', true) . '.' . $extension;
     $relativePath = 'uploads/' . $newFilename;
     $targetPath = __DIR__ . DIRECTORY_SEPARATOR . $relativePath;
+    $uploadDirectory = dirname($targetPath);
+
+    if (!is_dir($uploadDirectory) && !mkdir($uploadDirectory, 0755, true) && !is_dir($uploadDirectory)) {
+        return [null, 'Upload folder could not be created.'];
+    }
+
+    if (!is_writable($uploadDirectory)) {
+        return [null, 'Upload folder is not writable.'];
+    }
 
     if (!move_uploaded_file($file['tmp_name'], $targetPath)) {
         return [null, 'Failed to save uploaded image.'];
