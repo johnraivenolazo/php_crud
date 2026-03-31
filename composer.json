@@ -1,0 +1,10 @@
+{
+  "name": "aven/php-crud-pdo",
+  "description": "PHP CRUD app using PDO and Bootstrap",
+  "type": "project",
+  "require": {
+    "php": "^8.2",
+    "ext-pdo": "*",
+    "ext-fileinfo": "*"
+  }
+}
