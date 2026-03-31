@@ -19,11 +19,11 @@ function envOrDefault(string $key, string $default): string
 function resolveDatabaseConfig(): array
 {
     return [
-        'host' => envOrDefault('DB_HOST', '127.0.0.1'),
+        'host' => envOrDefault('DB_HOST', 'localhost'),
         'port' => envOrDefault('DB_PORT', '3306'),
-        'name' => envOrDefault('DB_NAME', 'php_crud'),
-        'user' => envOrDefault('DB_USER', 'root'),
-        'pass' => envOrDefault('DB_PASS', ''),
+        'name' => envOrDefault('DB_NAME', 'kruajrxc_aven'),
+        'user' => envOrDefault('DB_USER', 'kruajrxc_aven'),
+        'pass' => envOrDefault('DB_PASS', 'zK9wcpBrtGBvrmPsXHdj'),
     ];
 }
 
