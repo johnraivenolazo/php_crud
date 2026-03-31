@@ -1,15 +1,15 @@
 CREATE TABLE IF NOT EXISTS applicants (
-    id BIGSERIAL PRIMARY KEY,
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     full_name VARCHAR(120) NOT NULL,
     email VARCHAR(150) NOT NULL,
     phone VARCHAR(30) NOT NULL,
     address VARCHAR(255) NOT NULL,
     position_applied VARCHAR(120) NOT NULL,
-    years_experience INT NOT NULL CHECK (years_experience >= 0),
+    years_experience INT UNSIGNED NOT NULL,
     image_path VARCHAR(255) NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
-);
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO applicants (full_name, email, phone, address, position_applied, years_experience, image_path)
 VALUES

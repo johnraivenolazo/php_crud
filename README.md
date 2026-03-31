@@ -1,6 +1,6 @@
 # PHP CRUD Activity using PDO
 
-Simple PHP CRUD project using PDO and Bootstrap (no login/authentication).
+Simple PHP CRUD project using pure PHP, PDO, MySQL, and Bootstrap (no login/authentication).
 
 ## Features
 
@@ -10,7 +10,7 @@ Simple PHP CRUD project using PDO and Bootstrap (no login/authentication).
 - Upload and update profile images (JPG, PNG, GIF, WEBP up to 2MB).
 - Bootstrap-based plain UI.
 - Search and filter in list page (keyword, position, minimum experience).
-- Ready-to-import PostgreSQL sample data in `seed.sql`.
+- Ready-to-import MySQL sample data in `seed.sql`.
 
 ## Fields (6 + image)
 
@@ -24,9 +24,15 @@ Simple PHP CRUD project using PDO and Bootstrap (no login/authentication).
 
 ## Database Setup
 
-1. For Heroku, attach Heroku Postgres to your app.
-2. The app auto-reads `DATABASE_URL` and creates the table if missing.
-3. Optional local run (PostgreSQL): set `DB_DRIVER`, `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, and `DB_PASS`.
+1. Create a MySQL database, for example `php_crud`.
+2. Update your DB settings through environment variables if needed:
+   - `DB_HOST` default: `127.0.0.1`
+   - `DB_PORT` default: `3306`
+   - `DB_NAME` default: `php_crud`
+   - `DB_USER` default: `root`
+   - `DB_PASS` default: empty string
+3. The app auto-creates the `applicants` table when it runs.
+4. To preload sample records, import `seed.sql` into MySQL using phpMyAdmin, MySQL Workbench, or the `mysql` CLI.
 
 ## Run Locally
 
@@ -35,29 +41,8 @@ Simple PHP CRUD project using PDO and Bootstrap (no login/authentication).
 3. Open the project in your browser, for example:
    - `http://localhost/php_crud/index.php`
 
-## Deploy on Heroku
-
-1. Install Heroku CLI and login:
-   - `heroku login`
-2. Initialize git if needed and commit files:
-   - `git init`
-   - `git add .`
-   - `git commit -m "Prepare Heroku deployment"`
-3. Create Heroku app:
-   - `heroku create your-app-name`
-4. Add PHP buildpack (usually auto-detected):
-   - `heroku buildpacks:set heroku/php`
-5. Add Heroku Postgres (sets `DATABASE_URL` automatically):
-   - `heroku addons:create heroku-postgresql:essential-0`
-6. Deploy:
-   - `git push heroku main`
-   - If your branch is master: `git push heroku master`
-7. Open app:
-   - `heroku open`
-
 ## Notes
 
 - Uploaded images are saved in `uploads/`.
 - This project is plain style and does not include login/auth modules.
-- To preload sample records, run `seed.sql` in PostgreSQL (Heroku `psql` or local psql).
-- Heroku dyno filesystem is ephemeral, so local image uploads are temporary unless you use external storage (for example Cloudinary, S3, or similar).
+- The app now targets MySQL only and no longer includes the old PostgreSQL/Heroku setup.

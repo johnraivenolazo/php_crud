@@ -6,6 +6,6 @@
     "php": "^8.2",
     "ext-pdo": "*",
     "ext-fileinfo": "*",
-    "ext-pdo_pgsql": "*"
+    "ext-pdo_mysql": "*"
   }
 }
