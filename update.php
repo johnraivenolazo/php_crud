@@ -53,7 +53,8 @@ $sql = 'UPDATE applicants
             address = :address,
             position_applied = :position_applied,
             years_experience = :years_experience,
-            image_path = :image_path
+            image_path = :image_path,
+            updated_at = NOW()
         WHERE id = :id';
 
 $update = $pdo->prepare($sql);
